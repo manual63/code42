@@ -16,7 +16,6 @@ class Members extends React.Component {
         return (
             <div>
                 <h1>Member List</h1>
-                <MemberDetails/>
             </div>
         );
     }

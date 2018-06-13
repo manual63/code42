@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Members from './components/members';
+import MemberLayout from './components/memberLayout';
 
 const wrapper = document.getElementById('app');
-wrapper ? ReactDOM.render(<Members />, wrapper) : false;
+wrapper ? ReactDOM.render(<MemberLayout />, wrapper) : false;
 
