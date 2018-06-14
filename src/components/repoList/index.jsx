@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class RepoList extends React.Component {
     constructor(props) {
@@ -7,19 +8,24 @@ class RepoList extends React.Component {
         this.state = {
             repoList: []
         }
+    }
 
+    setRepos() {
         fetch(this.props.reposUrl)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            this.setState({'repoList': this.state.repoList});
-        });
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                this.setState({'repoList': data});
+            });
     }
 
     componentDidMount() {
-        console.log(this.props.reposUrl);
+        this.setRepos();
+    }
 
+    componentDidUpdate() {
+        this.setRepos();
     }
 
     render() {
@@ -38,6 +44,10 @@ class RepoList extends React.Component {
             </div>
         );
     }
+}
+
+RepoList.propTypes = {
+    repoList: PropTypes.array
 }
 
 export default RepoList;

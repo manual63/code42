@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import RepoList from '../repoList';
 
@@ -9,9 +10,8 @@ class MemberDetail extends React.Component {
 
     render() {
         const memberDetails = this.props.memberDetails;
-        console.log(memberDetails.repos_url);
+
         if (memberDetails.login) {
-            console.log(memberDetails.repos_url);
             return (
                 <div>
                     <h1>Member Details</h1>
@@ -27,6 +27,10 @@ class MemberDetail extends React.Component {
         }
 
     }
+}
+
+MemberDetail.propTypes = {
+    memberDetails: PropTypes.object
 }
 
 export default MemberDetail;

@@ -1,13 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Members extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props.members);
-    }
-
-    showHello() {
-        alert('Hello!');
     }
 
     render() {
@@ -26,6 +22,10 @@ class Members extends React.Component {
             </div>
         );
     }
+}
+
+Members.propTypes = {
+    members: PropTypes.array
 }
 
 export default Members;
