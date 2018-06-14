@@ -3,6 +3,8 @@ import React from 'react';
 import Members from '../members';
 import MemberDetails from '../memberDetails';
 
+import styles from './styles.less';
+
 class MemberLayout extends React.Component {
     constructor() {
         super();
@@ -43,7 +45,7 @@ class MemberLayout extends React.Component {
 
     render() {
         return (
-            <div className="row">
+            <div className={`${styles.wrapper} row`}>
                 <div className="col-md-3">
                     <Members members={this.state.members} showMemberDetails={this.showMemberDetails} />
                 </div>

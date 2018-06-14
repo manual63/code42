@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import RepoList from '../repoList';
 
+import styles from './styles.less';
+
 class MemberDetail extends React.Component {
     constructor(props) {
         super(props);
@@ -13,7 +15,7 @@ class MemberDetail extends React.Component {
 
         if (memberDetails.login) {
             return (
-                <div>
+                <div className={styles.wrapper}>
                     <h1>Member Details</h1>
                     <div>{memberDetails.login}</div>
                     <div><img src={memberDetails.avatar_url} /></div>
