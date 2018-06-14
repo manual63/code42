@@ -9,18 +9,20 @@ class MemberLayout extends React.Component {
     constructor() {
         super();
 
+        // Having states all over the place is why I would ideally use Redux and have the state store all in one place
+        // But for a sinple app like this, local state works
         this.state = {
             members: [],
             memberDetails: {}
         };
 
         this.getMembers()
-        .then((data) => {
-            this.setState({'members': data});
-        })
-        .catch((error) => {
-            console.log('error', error);
-        })
+            .then((data) => {
+                this.setState({'members': data});
+            })
+            .catch((error) => {
+                console.log('error', error);
+            })
 
         this.showMemberDetails = this.showMemberDetails.bind(this);
     }

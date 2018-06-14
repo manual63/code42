@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './styles.less';
+
 class Members extends React.Component {
     constructor(props) {
         super(props);
@@ -10,8 +12,8 @@ class Members extends React.Component {
         const members = this.props.members;
 
         return (
-            <div>
-                <h1>Member List</h1>
+            <div className={styles.listWrapper}>
+                <h2>Member List</h2>
                 <ul>
                     {
                         members.map(member => {

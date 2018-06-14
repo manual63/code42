@@ -17,7 +17,6 @@ class MemberDetail extends React.Component {
             return (
                 <div className={styles.wrapper}>
                     <h1>Member Details</h1>
-                    <div>{memberDetails.login}</div>
                     <div><img src={memberDetails.avatar_url} /></div>
                     <RepoList reposUrl={memberDetails.repos_url} />
                 </div>

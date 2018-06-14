@@ -5,6 +5,8 @@ class RepoList extends React.Component {
     constructor(props) {
         super(props);
 
+        // Having states all over the place is why I would ideally use Redux and have the state store all in one place
+        // But for a sinple app like this local state works
         this.state = {
             repoList: []
         }
@@ -33,7 +35,7 @@ class RepoList extends React.Component {
 
         return (
             <div>
-                <div>Repos</div>
+                <h2>Repos</h2>
                 <ul>
                 {
                     repoList.map(repo => {
