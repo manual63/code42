@@ -49,7 +49,7 @@ class MemberLayout extends React.Component {
         return (
             <div className={`${styles.wrapper} row`}>
                 <div className="col-md-3">
-                    <Members members={this.state.members} showMemberDetails={this.showMemberDetails} />
+                    <Members members={this.state.members} showMemberDetails={this.showMemberDetails} selectedMember={this.state.memberDetails.id} />
                 </div>
                 <div className="col-md-9">
                     <MemberDetails memberDetails={this.state.memberDetails}/>

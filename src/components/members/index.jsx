@@ -17,7 +17,11 @@ class Members extends React.Component {
                 <ul>
                     {
                         members.map(member => {
-                            return <li onClick={() => this.props.showMemberDetails(member.id)}>{member.login}</li>;
+                            return (
+                                <li onClick={() => this.props.showMemberDetails(member.id)} className={this.props.selectedMember === member.id ? styles.active : ''}>
+                                    {member.login}
+                                </li>
+                            )
                         })
                     }
                 </ul>
