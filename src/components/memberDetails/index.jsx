@@ -45,7 +45,8 @@ class MemberDetail extends React.Component {
 }
 
 MemberDetail.propTypes = {
-    memberDetails: PropTypes.object
+    memberDetails: PropTypes.object,
+    memberRepoList: PropTypes.array
 }
 
 export default MemberDetail;
