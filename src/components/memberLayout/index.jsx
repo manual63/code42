@@ -9,11 +9,15 @@ class MemberLayout extends React.Component {
     constructor() {
         super();
 
-        // Having states all over the place is why I would ideally use Redux and have the state store all in one place
-        // But for a sinple app like this, local state works
         this.state = {
             members: [],
-            memberDetails: {}
+            memberDetails: {
+                id: '',
+                name: '',
+                location: '',
+                imageUrl: ''
+            },
+            memberRepoList: []
         };
 
         this.getMembers()
@@ -24,11 +28,7 @@ class MemberLayout extends React.Component {
                 console.log('error', error);
             })
 
-        this.showMemberDetails = this.showMemberDetails.bind(this);
-    }
-
-    componentDidMount() {
-
+        this.getMemberDetails = this.getMemberDetails.bind(this);
     }
 
     getMembers() {
@@ -38,21 +38,53 @@ class MemberLayout extends React.Component {
         });
     }
 
-    showMemberDetails(memberId) {
+    getMemberRepos(reposUrl) {
+        fetch(reposUrl)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            this.setState({'memberRepoList': data});
+        });
+    }
+
+    getMemberDetails(memberId) {
         const selectedMember = this.state.members.find(member => {
             return member.id === memberId;
+        });
+
+        fetch(selectedMember.url)
+        .then((response) => {
+            return response.json();
         })
-        this.setState({'memberDetails': selectedMember});
+        .then((data) => {
+            this.setState({
+                memberDetails: {
+                    id: data.id,
+                    name: data.name,
+                    imageUrl: data.avatar_url,
+                    location: data.location
+                }
+            })
+            this.getMemberRepos(data.repos_url);
+        });
     }
 
     render() {
         return (
-            <div className={`${styles.wrapper} row`}>
-                <div className="col-md-3">
-                    <Members members={this.state.members} showMemberDetails={this.showMemberDetails} selectedMember={this.state.memberDetails.id} />
+            <div>
+                <div class="row">
+                    <header className="col-md-12">
+                        <h1>Code42 GitHub Members</h1>
+                    </header>
                 </div>
-                <div className="col-md-9">
-                    <MemberDetails memberDetails={this.state.memberDetails}/>
+                <div class="row">
+                    <div className="col-md-3">
+                        <Members members={this.state.members} getMemberDetails={this.getMemberDetails} selectedMember={this.state.memberDetails.id} />
+                    </div>
+                    <div className="col-md-9">
+                        <MemberDetails memberDetails={this.state.memberDetails} memberRepoList={this.state.memberRepoList} />
+                    </div>
                 </div>
             </div>
         );

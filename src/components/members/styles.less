@@ -1,10 +1,18 @@
 @import "../../app.less";
 
 .listWrapper {
-    background: #cccccc;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
     padding: 20px;
-}
 
-.active {
-    background-color: #fc7d7d;
+    ul {
+        li {
+            cursor: pointer;
+            color: #0202ad;
+        }
+    }
+
+    .active {
+        font-weight: 700;
+    }
 }

@@ -13,12 +13,26 @@ class MemberDetail extends React.Component {
     render() {
         const memberDetails = this.props.memberDetails;
 
-        if (memberDetails.login) {
+        if (memberDetails.name) {
             return (
                 <div className={styles.wrapper}>
-                    <h1>Member Details</h1>
-                    <div><img src={memberDetails.avatar_url} /></div>
-                    <RepoList reposUrl={memberDetails.repos_url} />
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h2>Member Details</h2>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-3"><img src={memberDetails.imageUrl} /></div>
+                        <div className="col-md-9">
+                            <div>{memberDetails.name}</div>
+                            <div>{memberDetails.location}</div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <RepoList repoList={this.props.memberRepoList} />
+                        </div>
+                    </div>
                 </div>
             ); 
         } else {
