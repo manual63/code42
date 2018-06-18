@@ -2,4 +2,5 @@ node_modules
 dist
 .vscode
 jsconfig.json
+__snapshots__
 
