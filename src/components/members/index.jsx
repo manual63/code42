@@ -32,7 +32,7 @@ class Members extends React.Component {
 
 Members.propTypes = {
     members: PropTypes.array,
-    selectedMember: PropTypes.object
+    selectedMember: PropTypes.string
 }
 
 export default Members;
