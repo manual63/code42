@@ -22,15 +22,11 @@ describe('MemberLayout', () => {
     });
 });
 
-describe('GetMembers()', () => {
+describe('getData()', () => {
     beforeEach(() => {
-        const memberList = [
-            'member1',
-            'member2',
-            'member3'
-        ];
+        const mockData = []
         const response = {
-            json: jest.fn(() => memberList)
+            json: jest.fn(() => mockData)
         }
         global.fetch = jest.fn(() => new Promise(resolve => resolve(response)));
     });
@@ -39,19 +35,15 @@ describe('GetMembers()', () => {
         global.fetch = null;
     });
 
-    it('should return list of members', async () => {
-        const memberList = [
-            'member1',
-            'member2',
-            'member3'
-        ];
+    it('should return empty data obj', async () => {
+        const mockData = []
 
         const memberLayout = shallow(
             <MemberLayout />
         );
 
-        const members = await memberLayout.instance().getMembers();
+        const data = await memberLayout.instance().getData();
 
-        expect(members).toEqual(memberList)
+        expect(data).toEqual(mockData)
     });
 });

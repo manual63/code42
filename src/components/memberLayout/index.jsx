@@ -20,29 +20,27 @@ class MemberLayout extends React.Component {
             memberRepoList: []
         };
 
-        this.getMembers()
-            .then((data) => {
-                this.setState({'members': data});
-            })
-            .catch((error) => {
-                console.log('error', error);
-            })
+        this.getMembers('https://api.github.com/orgs/code42/members');
 
         this.getMemberDetails = this.getMemberDetails.bind(this);
     }
 
-    getMembers() {
-        return fetch('https://api.github.com/orgs/code42/members')
+    getData(url) {
+        return fetch(url)
         .then((response) => {
             return response.json();
         });
     }
 
+    getMembers(url) {
+        this.getData(url)
+        .then((data) => {
+            this.setState({'members': data});
+        });
+    }
+
     getMemberRepos(reposUrl) {
-        fetch(reposUrl)
-        .then((response) => {
-            return response.json();
-        })
+        this.getData(reposUrl)
         .then((data) => {
             this.setState({'memberRepoList': data});
         });
@@ -53,10 +51,7 @@ class MemberLayout extends React.Component {
             return member.id === memberId;
         });
 
-        fetch(selectedMember.url)
-        .then((response) => {
-            return response.json();
-        })
+        this.getData(selectedMember.url)
         .then((data) => {
             this.setState({
                 memberDetails: {
