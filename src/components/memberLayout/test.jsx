@@ -3,7 +3,10 @@ import MemberLayout from './index';
 
 describe('MemberLayout', () => {
     beforeEach(() => {
-        global.fetch = jest.fn(() => new Promise(resolve => resolve()));
+        const mockResponse = {
+            json: jest.fn()
+        }
+        global.fetch = jest.fn(() => new Promise(resolve => resolve(mockResponse)));
     });
 
     afterEach(() => {
@@ -52,4 +55,3 @@ describe('GetMembers()', () => {
         expect(members).toEqual(memberList)
     });
 });
-
