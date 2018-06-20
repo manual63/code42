@@ -1,7 +1,7 @@
 {
-  "name": "fitnesstimer",
+  "name": "code42",
   "version": "0.0.1",
-  "description": "A fitness timer for fitness instructors",
+  "description": "Code42 code challenge",
   "private": true,
   "scripts": {
     "test": "jest",
